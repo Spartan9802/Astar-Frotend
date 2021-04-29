@@ -9,7 +9,7 @@
 </head>
     <body>
         <div id="sidebar" class="column">
-            <form id="searchForm" action="" method="get">
+            <form id="searchForm" action="/" method="get">
                 <h2>Calcul d'itinéraire</h2>
                 <input required name="startCity" type="text" placeholder="Ville de départ...">
                 <input required name="goalCity" type="text" placeholder="Ville de destination...">
