@@ -1,3 +1,5 @@
+import API from './api.js'
+
 const w = 600;
 const h = 600;
 
@@ -12,23 +14,16 @@ const svg = d3.select("div#map").append("svg").style("background-color","#c9e8fd
 const projection = d3.geoMercator().translate([w/2, h/2]).scale(2200).center([2.454071, 46.279229]);
 const path = d3.geoPath().projection(projection);
 
-function getVilles() {
-    return fetch('http://192.168.1.86:5000/api/villes' )
-            .then((resp) => resp.json())
-            .catch(function(error) {
-                console.log(error);
-            });
-}
 
 // load data
-const depmap = d3.json("data.json");
-const cities = getVilles();
+const depmap = d3.json("./static/data.json");
+const cities = await API.getVilles();
 
 Promise.all([depmap, cities]).then(function(values) {
 
     function parseCities() {
         const arr = []
-        for (const [k, v] of Object.entries(values[1]['villes'])) {
+        for (const [k, v] of Object.entries(values[1])) {
             arr.push({city: k, Latitude: v.Latitude, Longitude:v.Longitude})
         }
         values[1] = arr

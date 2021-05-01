@@ -1,3 +1,5 @@
+import API from './api.js'
+
 const form  = document.querySelector("#searchForm");
 const startCity = form.elements["startCity"];
 const endCity = form.elements["goalCity"];
@@ -21,7 +23,7 @@ function createRouteList(data) {
 
 function drawnRoute(data) {
     document.resetLine()
-    paths = Object.keys(data.paths)
+    const paths = Object.keys(data.paths)
     for (let i = 1; i < paths.length; i++) {
         const loc1 = document.getVilleCoord(paths[i-1])
         const loc2 = document.getVilleCoord(paths[i])
@@ -29,17 +31,6 @@ function drawnRoute(data) {
     }
 }
 
-
-async function getVille(name) {
-    return await fetch('http://192.168.1.86:5000/api/' + name )
-        .then((resp) => resp.json())
-        .then(function(data) {
-            return data
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-}
 
 function error(error) {
     el.innerHTML = null;
@@ -55,11 +46,8 @@ form.addEventListener("submit", function(e){
     e.preventDefault();
 
     if ( startCity.value && endCity.value ) {
-
-        fetch('http://192.168.1.86:5000/api/' + startCity.value + '/' + endCity.value + '/')
-            .then((resp) => resp.json())
-            .then(function(data) {
-
+        API.getTrajet(startCity.value, endCity.value)
+            .then(function (data) {
                 if (data.error) {
                     error(data.error)
                     return
@@ -72,6 +60,7 @@ form.addEventListener("submit", function(e){
             .catch(function(error) {
                 console.log(error);
             });
+
 
     }
 
