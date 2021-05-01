@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>ProjetLPI</title>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <style></style>
-</head>
-    <body>
+<?php include_once('../head.php') ?>
         <div id="sidebar" class="column">
             <form id="searchForm" action="/" method="get">
                 <h2>Calcul d'itinéraire</h2>
@@ -23,7 +14,6 @@
             <div id="map" class="svg-container"></div>
         </div>
 
-        <script src="map.js"></script>
-        <script src="form.js"></script>
-    </body>
-</html>
+        <script src="static/map.js" type="module"></script>
+        <script src="static/form.js" type="module"></script>
+<?php include_once('../footer.php') ?>
