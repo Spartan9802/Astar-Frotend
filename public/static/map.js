@@ -7,7 +7,7 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1)
 }
 
-const svg = d3.select("div#map").append("svg").style("background-color","#c9e8fd")
+const svg = d3.select("div#map").append("svg").style("background-color","#7faeec")
     .attr("viewBox", "0 0 " + w + " " + h)
     .classed("svg-content", true);
 
@@ -17,7 +17,7 @@ const path = d3.geoPath().projection(projection);
 
 // load data
 const depmap = d3.json("./static/data.json");
-const cities = await API.getVilles();
+const cities = API.getVilles();
 
 Promise.all([depmap, cities]).then(function(values) {
 
@@ -79,6 +79,7 @@ Promise.all([depmap, cities]).then(function(values) {
             .attr("cy", function(d) {return projection([position.coords.longitude, position.coords.latitude])[1];})
             .attr("r", "3px")
             .attr("fill", "red");
+
         svg
             .append("text")
             .text(function(d) {
