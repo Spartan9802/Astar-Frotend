@@ -26,6 +26,8 @@ body {
     flex-shrink: 0;  /*makes sure that content is not cut off in a smaller browser window*/
     min-width: 20%;
     flex-basis: 0;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 35%);;
+    z-index: 10;
 }
 
 #map {
@@ -47,7 +49,7 @@ h1, h2, h3 {
 
 #right {
     flex: 1;
-    background: rgb(201, 232, 253);
+    background: #7faeec;
 }
 
 #route_list ul {
@@ -66,11 +68,15 @@ h1, h2, h3 {
     color: white;
 }
 
+.underline {
+    border-bottom: solid;
+}
+
 /* Map Styling */
 /* ---------------------- */
 .continent {
-    fill: #f0e4dd;
-    stroke: #e0cabc;
+    fill: #aee2a6;
+    stroke: #96ca8e;
     stroke-width: 0.5;
 }
 
@@ -108,7 +114,7 @@ form {
     padding: 1rem;
     position: relative;
     overflow: hidden;
-    background: dodgerblue;
+    background: #1A73E8;
 }
 
 form .email, form .email a {
