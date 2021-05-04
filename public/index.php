@@ -1,7 +1,7 @@
 <?php include_once('../head.php') ?>
         <div id="sidebar" class="column">
             <form id="searchForm" action="/" method="get">
-                <h2>Calcul d'itinéraire</h2>
+                <h2 class="underline">Calcul d'itinéraire</h2>
                 <input required name="startCity" type="text" placeholder="Ville de départ...">
                 <input required name="goalCity" type="text" placeholder="Ville de destination...">
                 <input type="submit" value="Rechercher">

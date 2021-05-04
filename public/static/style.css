@@ -303,6 +303,10 @@ input[type="checkbox"]:checked + label span::after {
     background: hsl(var(--fgColorH), var(--fgColorS), var(--fgColorL));
 }
 
+input[name="startCity"] {
+    margin-top: 15px;
+}
+
 
 /*------------------------------------------
   Responsive Grid Media Queries - 1280, 1024, 768, 480
