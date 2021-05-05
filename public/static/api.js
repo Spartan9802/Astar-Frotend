@@ -1,11 +1,31 @@
-
+import Cookie from './cookie.js'
 
 export default class API {
 
-    static url = "http://127.0.0.1:5000"
+    static url = "http://192.168.1.86:5000"
+
+    static createHeaders() {
+        const jwt = Cookie.getCookie('access_token_cookie')
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', `Bearer ${jwt}`);
+        return headers
+    }
 
     static getVilles() {
         return fetch(API.url + '/villes' )
+            .then((resp) => resp.json())
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    static getAdmin() {
+        const headers = API.createHeaders()
+        return fetch(API.url + '/admin', {
+            mode: 'cors',
+            headers
+        } )
             .then((resp) => resp.json())
             .catch(function(error) {
                 console.log(error);
@@ -38,6 +58,22 @@ export default class API {
 
     static updateVille() {
 
+    }
+
+    static login(username, password) {
+        const body = JSON.stringify({username: username, password: password})
+        return fetch(API.url + '/admin/login', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: body,
+            })
+            .then((resp) => resp.json())
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
 
