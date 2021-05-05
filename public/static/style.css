@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html, body {
@@ -30,6 +31,17 @@ body {
     z-index: 10;
 }
 
+#app {
+    flex: 1;
+    display: flex;
+}
+
+.content {
+    max-width: 1280px;
+    margin: auto;
+    flex: 1;
+}
+
 #map {
     margin: auto;
 }
@@ -50,6 +62,7 @@ h1, h2, h3 {
 #right {
     flex: 1;
     background: #7faeec;
+    position: relative;
 }
 
 #route_list ul {
@@ -90,6 +103,33 @@ h1, h2, h3 {
     fill: #3c373d;
 }
 
+.button-edit-wrapper {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 120px;
+}
+
+.button-edit {
+    position: absolute;
+    right: 0;
+    background: #273746;
+    border-radius: 50px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 64px;
+    cursor: pointer;
+    fill: white;
+    transition: transform .7s ease-in-out;
+}
+
+.button-edit:hover {
+    background: #1C2833;
+    transform: rotate(120deg);
+}
+
 
 /* Form Styling */
 /* --------------------- */
@@ -114,6 +154,19 @@ form {
     padding: 1rem;
     position: relative;
     overflow: hidden;
+}
+
+#loginForm {
+    max-width: 500px;
+    margin: auto;
+}
+
+#loginForm h1 {
+    text-align: center;
+    color: black;
+}
+
+#searchForm {
     background: #1A73E8;
 }
 
@@ -146,6 +199,7 @@ form > div {
 label {
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
 }
 
 .label-show-password {
@@ -347,3 +401,80 @@ input[name="startCity"] {
 }
 
 @media all and (max-width: 480px) { }
+
+
+/* Tooltip container */
+.tooltip {
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(33, 47, 61, 0.85);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    right: 50%;
+    top: 9px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin:0;
+    padding:0;
+    width: 100%;
+}
+table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+table th, table td {
+    padding: 10px;
+    text-align: center;
+}
+table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+    table thead {
+        display: none;
+    }
+    table tr {
+        border-bottom: 2px solid #ddd;
+        display: block;
+        margin-bottom: 10px;
+    }
+    table td {
+        border-bottom: 1px dotted #ccc;
+        display: block;
+        font-size: 13px;
+        text-align: right;
+    }
+    table td:last-child {
+        border-bottom: 0;
+    }
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
